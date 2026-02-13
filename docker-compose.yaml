@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  q1-apache:
+    image: httpd:latest
+    container_name: apache_q1
+    ports:
+      - "80:80"  # Q1 के लिए पोर्ट 80
+    networks:
+      - net_q1
+    volumes:
+      - ./2026_Q1/index.html:/usr/local/apache2/htdocs/index.html
+
+  q2-apache:
+    image: httpd:latest
+    container_name: apache_q2
+    ports:
+      - "90:80"  # Q2 के लिए पोर्ट 90
+    networks:
+      - net_q2
+    volumes:
+      - ./2026_Q2/index.html:/usr/local/apache2/htdocs/index.html
+
+  q3-apache:
+    image: httpd:latest
+    container_name: apache_q3
+    ports:
+      - "8090:80" # Q3 के लिए पोर्ट 8090
+    networks:
+      - net_q3
+    volumes:
+      - ./2026_Q3/index.html:/usr/local/apache2/htdocs/index.html
+
+networks:
+  net_q1:
+    driver: bridge
+  net_q2:
+    driver: bridge
+  net_q3:
+    driver: bridge
